@@ -1,0 +1,105 @@
+Hive Join Optimization Best Practices
+optimization of Hive's query execution planning to improve the efficiency of joins and reduce rhw need for user hits. Join optimization wiki
+https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization
+
+Join type
+shuffle join
+whe default choice awalys works
+how reads forom part of one of the tables
+buckets and souts on join key
+sends one bucket to teach redu e
+join is done on the reduce side
+
+join type
+map join
+one table can fit in memory
+reads small table into memory hash table
+streams through part of the large file
+joins each redcored from hash table
+joins are buye the mapper alone
+`hive.auto.convert.join=true`
+`hive.conditional.join=???`
+
+sort merge bucket
+when
+if both tables are sorted the same
+bucketed the same
+joining on the sorted/bucketed column
+
+each precess
+reads a bucket form each table
+processes the row with the lowst value
+`hive.auto.convert.sortmerge.join=true`
+
+
+enable parallel execution
+A Hive query is executed in one or more stages. If the independent stages ca be run in parallele, the query performance increases.
+
+`hive.exec.parappel=true`
+To limit the numver of joves to run in parallel modify the
+`hiv.exec.parallel.thead.number (default is 8)`
+
+
+Enable Vectorization for ORC
+Hive process data row by row. Vectorizaiton directs hive to process data in blocks of 1,024 rows rather than one row at a time. Vectorization is only applicable to the ORC file format.
+`hive.vectorized.execution.enabled=true;`
+`hive.vectorized .execution.reduce.enabled=true;`
+
+
+|Formate|Tool|Algorithm|File Extension|Splittable|
+Gzip|Gzip|DEFLATE|.gz|No
+Bzip2|Bzip2|Bzip2|.bz2|Yes
+LZO|LZop|LZO|.lzo|Yes, if indexed|
+Snappy|N/A|Snappy|Snappy|No
+
+
+Enable intermediate compression
+Map tasks create intermediate filets taht are used by reducer tabl. Intermeidate compressions shrinks the intermediate file size.
+Hadoop jobs are usually I/O bottlenecked. compressing data can speed up I/O and overall network transfer.
+As a general rule having the compression method splibe splittable is important. Otherwise few mappers can be created. 
+`hive.exec.compress.intermediate=true`
+`mapred.map.output.compression.codec=org.apache.hadoop.io.compress.SnappyCodec`
+
+Enable Cost-Based Optimization
+By default Hive follows a set of rules to find one optimal query execution plan. Cost-Based-Optimization (CBO) evaluates multiple plans to execute a query and assigns a cost to each plan, then determines the cheapest plan to execute.
+
+To enable:
+`hive.cbo.enable=true;`
+Adiditonaly
+`hive.compute.quiery.using.stats=true;`
+when this is set to true hive uses metastore to answer simple queries like count(*)
+`hive.stats.fetch.column.stats=true`
+Column statistics are created when CBO is enabled. Hive uses column statistics, which are stored in metastore to optimize queries. Fetching column statistics for each column takes longer when the humber of columns is high.When set to false thiss setting disables fetching column statistics from the metastore.
+`hive.states.fetch.partition.stats`
+Basic partition statistics suach as number of rows, data size, and file size are stored in metastore. When set to ture, the partition stats are fetched from metastore. Whne false the size is fetched forrm the file system and the number of rows is fetchd from the row schema.
+
+CBO continued
+Use column Statistics and the Cost-Based Optimizer
+A CBO generates more efficient query plan. In hive, the CBO is enabled by default, but it requires that columns tatistics be generated for tables. COlumn statistics can be expensive oto sompue so they are not automated. Hive has a CBO based on APACHE Calcit and an older physical optimizer. All of the optimizations are being migrated to the CBO. The physical optimizer performs better with statistics, but the CBO requires statistics.
+SET hive.cbo.enable=trye;
+
+for physical optimizer, set the followng properties and generate statistics.
+SET hvie.stats.fetch.column.stats=true;
+SET hive.stats.fetch.partition.stats=true;
+
+Father statistics critical to the CBO:
+CBO requires both table leverl and column level statistics
+Table statistics should always be collected.
+SET hive.stats.autogather=true;
+If you have an existing table that does not have statistics collected you can collect them by running following query
+ANALYZE TABLE <>TABLE_BAME> COMPUTE STATISTICS;
+Column-level statistics:
+Column level statistics are expensive to compute and are not yet automated. Compute column statistics for all existing tables using
+ANALUYZE TABLE <TABLE_NAME> COMPUTE STSTISTICS for columns;
+As new partitions are added to the table if the table is partitioned on "col1" and the new partition has the key "x" then you must use the following command
+ANALYZ TABLE <TABLE_NAME> parition (coll="x") COMPUTE STATISTICS FOR COl/?UMNS;
+
+
+The cost based optimizer tries to generate the most efficient join order. For query plan optimization to work correctly make sure that columns that are involved in joins, filters and aggregats have columns tatistacs and that hive.cbo.enable is enabled. CBO does not support all operators such as sort by and table functions if your query contains theses operators, rewrite the query to inclue only the supported operators.
+
+You can coerce the join order by wrewriting the query using COmmon TABLE expressions CTEs))
+
+
+
+Another Mp join jahs table definition
+hive.auto.convert.join.noconditionaltask.size is the maximum size of a table that is converted into a hash table for a map join. For smaller clusters, one third of the total memory is sufficient. If you have many dimension tables that joins a fact table these can add up to a large size. memory cna be limited to on-half GB to be ont he safe side.
