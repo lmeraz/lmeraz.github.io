@@ -1,0 +1,76 @@
+Alright,
+
+Airflow
+
+According to the documents, Airflow is a platform to prgramatically author, schedule , and monitor workflows. TO simplify airflow is a webservice that allows you to create a workflow of tasks called as a directed acyclic graph (fancy word for graph with nodes that point in 1 direction) , schedule it to run at some interval think cron, and monitor it via a user interface.
+
+To understand the mechanics of airflow let's consider a make belief company called TallyVotes.
+
+TallyVotes has a daily workflow it must complete called voting_report.
+
+The workflow is comprised of 3 tasks. The first task, wait_for_votes, waits until all votes have been registered. The second task, tally_votes, counts up all the votes and writes down the results somewhere. The final task, send_report, sends out the results to a recipient, in this case someone from the news. Notice how each task is sequential. The previous tasks must be completed succesfully before the next. You cannot send the results if you have not counted the ballots, and you cannot count the ballots until you are sure voting is done. This is the nature of the Directed Acyclic Graph.
+
+Now, to succesfully complete this workflow you need an anal retentive manager, playing the role of the airflow scheduler. The manager is always checking the clock to see if it's time to kick off the workflow. If it's time, the scheduler assigns the first task to a worker or a set of workers. We call them worker nodes or a worker cluster.
+
+
+
+The manager plays the role of Airflow's scheduler. The manager checks often to see if the worklow descThe manager will orchestrate the workers to do each task of the 3 tasks, check to see voting is completed, tallying of the votes, and reporting to the media. 
+
+
+
+think of airflow as the anal retentive manager at work. The manager is checking their calendar to see if any workflows should be running. If a workflow is supposed to run she kicks off any tasks that do not require any dependencies. The manager knows what order the tasks in the workflow should be completed based on the DAG. The manager is updating you, the boss via the ui on the completion failure and success of each task in a workflow.
+
+
+
+
+The task or tasks (since their may be more than one that do not have any dependencies) are assigned to a worker or a set of workers. The workers or set of workers are silod off, but within their tasks silo they are allowed to communicate with one another for the purporse of parallelization working together since sometimes a worker may not have enough resources to do the whole task on their own. They are called worker ndoes ands together they may be called a cluster.
+
+
+However, they can change the state of an environment. For example, they can take the results of the query  they however can notify the manager and other workers if they have completed their task. They can also change the state of something
+
+
+
+
+
+
+SImple enough right?
+
+Heer are the principles airflow claims:
+Airflow is dynamic - airflow pipelines are configurations as code (written in Python) allowing dynamic pipeline generation.
+extesnivle you can easily define your own operators, executiors and extend the library to fit your needs.
+elegant - pipelines are lean and explicit. You can use jinja templating to parameterize scripts.
+scalable - airflow has modular architercutre and uses message queues to orchestraite and arbitary number of workers.
+
+
+What airflow is not. Airflow is not a data streaming solution. tasks do not communicate data from one to another, though metadata can be excahanged. 
+
+
+Airflow was started by ca cool dude named MAxime Beachemin at airbnb in October 2014. Prior to airbnb he was at Facebook, and now currently works at Lyft. check him out at ()
+
+How to get started... Well, it's a no brainer, head over to the quickstart. it's "quick and straighforward". In my experience nothing ever has been.
+
+I only expect there to be python 3 installed on the system. 
+in a terminal run
+
+* make sure the environmentvariable is always present
+```bash
+mkdir airflow-demo
+cd airflow-demo
+virtualenv .venv
+source .venv/bin/activate
+if you change the home dir remember to export it in each terminal
+export AIRFLOW_HOME=~/airflow-demo/airflow
+pip install apache-airflow
+airflow initdb
+@ in a new terminal
+airflow webserver -p 8080
+```
+Upon running the commands, you'll see AIRFLOW_HOME/airflow.cfg or on the admin. 
+
+time to run your very first dag.
+```
+
+```
+
+
+The Airflow scheduler monitors all tasks and all DAGs, and triggers the task instances whose dependencies have been met. Behind the scenes, it spins up a subprocess, which monitors and stays in sync with a folder for all DAG objects it may contain, and periodically (every minute or so) collects DAG parsing results and inspects active tasks to see whether they can be triggered.

@@ -1,0 +1,2 @@
+[Procrastination: It's pretty much all in the mind](https://hackerweb.app/#/item/17878716)  
+[What paths are there for people who're just average?](https://www.reddit.com/r/datascience/comments/8g91ad/what_paths_are_there_for_people_whore_just_average/)

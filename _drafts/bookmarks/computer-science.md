@@ -1,0 +1,7 @@
+[Big O Cheat Sheet](http://bigocheatsheet.com/)  
+[Google Tech Dev Guide](https://techdevguide.withgoogle.com/)  
+[Learn x in y](https://learnxinyminutes.com/)  
+[Open Source Computer Science](https://github.com/ossu/computer-science)  
+[The 12 Factor App](https://12factor.net/)  
+[The Architecture of Open Source Applications](http://aosabook.org/en/index.html)  
+[Find the Best Programming tutprials](https://hackr.io/)
