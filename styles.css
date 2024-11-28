@@ -113,4 +113,9 @@
       width: 75%;  /* Reduce width to 75% on mobile */
       margin: 10px auto; /* Center with margin */
     }
+
+    .photo-img {
+      width: 75%;  /* Reduce width to 75% on mobile */
+      margin: 10px auto; /* Center with margin */
+    }
   }
