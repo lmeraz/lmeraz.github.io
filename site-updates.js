@@ -20,11 +20,6 @@ const sites = [
     name: "Clown School Classes",
     url: "https://www.theclownschool.com/specialtyclasseslosangeles"
   },
-  {
-    id: "local",
-    name: "local",
-    url: "localhost:8000/index.html"
-  }
 ];
 
 const storageKey = "siteUpdateTracker";
