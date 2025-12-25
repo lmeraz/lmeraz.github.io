@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Update Tracker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="updates-page">
+  <header class="updates-hero">
+    <div class="container">
+      <a class="back-link" href="index.html">Home</a>
+      <h1 class="updates-title">Site Update Tracker</h1>
+      <p class="updates-subtitle">Check if a site changed since the last run. Status is stored in local storage and
+        cookies.</p>
+      <div class="updates-actions">
+        <button id="check-all" class="btn btn-custom">Check all sites</button>
+        <span id="run-status" class="run-status">Last run: Never</span>
+      </div>
+      <p class="updates-note">Some sites block cross-origin requests. This page tries a direct fetch first, then a
+        read-only proxy if needed.</p>
+    </div>
+  </header>
+
+  <main class="container my-5">
+    <div class="table-responsive">
+      <table class="table status-table" id="sites-table">
+        <thead>
+          <tr>
+            <th>Site</th>
+            <th>URL</th>
+            <th>Last checked</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </main>
+
+  <script src="site-updates.js" defer></script>
+</body>
+
+</html>

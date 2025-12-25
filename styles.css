@@ -1,121 +1,265 @@
 :root {
-    --primary-color: #f5f5dc;         /* Soft Beige */
-    --secondary-color: #e0e0e0;       /* Light Warm Gray */
-    --accent-color: #f9e0e6;          /* Pale Pink */
-    --highlight-color: #333;          /* Dark Gray */
-    --text-color: #000;               /* Black for Text */
-  }
-  
-  /* Global Styling */
-  body, html {
-    height: 100%;
-    font-family: 'Raleway', sans-serif;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-  }
+  --primary-color: #f5f5dc;
+  /* Soft Beige */
+  --secondary-color: #e0e0e0;
+  /* Light Warm Gray */
+  --accent-color: #f9e0e6;
+  /* Pale Pink */
+  --highlight-color: #333;
+  /* Dark Gray */
+  --text-color: #000;
+  /* Black for Text */
+}
 
-  /* Container Styling */
+/* Global Styling */
+body,
+html {
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+/* Container Styling */
 .img-container {
-    height: 100vh;  /* Full viewport height by default */
-  }
-  
-  /* Container Styling */
-  .container-fluid {
-    height: 100vh;
-    background-color: var(--primary-color);
-  }
-  
+  height: 100vh;
+  /* Full viewport height by default */
+}
+
+/* Container Styling */
+.container-fluid {
+  height: 100vh;
+  background-color: var(--primary-color);
+}
+
 /* Image Styling */
 .img-fluid {
-    width: 100%;
-    height: 100%;  /* Make image fill the container */
-    object-fit: cover;  /* Ensure the image covers the container */
-  }
-  
-  
-  /* Navigation & Button Styling */
-  .nav-right, .btn-custom {
-    background-color: var(--highlight-color);
-    color: var(--accent-color);
-  }
-  
-  .nav-link, .btn-custom {
-    color: var(--accent-color);
-  }
-  
-  .btn-custom {
-    border: 1px solid var(--accent-color);
-  }
-  
-  .btn-custom:hover {
-    background-color: var(--accent-color);
-    color: var(--highlight-color);
-  }
-  
-  /* Section Headers */
-  section h2, section h3 {
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 20px;
-  }
-  
-  /* Section Background Colors */
-  #about {
-    background-color: var(--secondary-color);
-  }
-  
-  #resume, #improv {
-    background-color: var(--primary-color);
-  }
-  
-  #media {
-    background-color: var(--accent-color);
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 768px) {
-    .nav-item {
-      margin: 10px 0;
-    }
-  
-    iframe {
-      width: 100%;
-    }
-  
-    .ratio {
-      height: 300px;
-    }
-  }
-  
-  /* Responsive Styling for Mobile */
+  width: 100%;
+  height: 100%;
+  /* Make image fill the container */
+  object-fit: cover;
+  /* Ensure the image covers the container */
+}
+
+
+/* Navigation & Button Styling */
+.nav-right,
+.btn-custom {
+  background-color: var(--highlight-color);
+  color: var(--accent-color);
+}
+
+.nav-link,
+.btn-custom {
+  color: var(--accent-color);
+}
+
+.btn-custom {
+  border: 1px solid var(--accent-color);
+}
+
+.btn-custom:hover {
+  background-color: var(--accent-color);
+  color: var(--highlight-color);
+}
+
+/* Section Headers */
+section h2,
+section h3 {
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Section Background Colors */
+#about {
+  background-color: var(--secondary-color);
+}
+
+#resume,
+#improv {
+  background-color: var(--primary-color);
+}
+
+#media {
+  background-color: var(--accent-color);
+}
+
+/* Responsive Styles */
 @media (max-width: 768px) {
-    .img-container {
-      height: 60vh;  /* Half of the viewport height on mobile */
-    }
+  .nav-item {
+    margin: 10px 0;
   }
-  
-  /* Image Styling for About Me Section */
+
+  iframe {
+    width: 100%;
+  }
+
+  .ratio {
+    height: 300px;
+  }
+}
+
+/* Responsive Styling for Mobile */
+@media (max-width: 768px) {
+  .img-container {
+    height: 60vh;
+    /* Half of the viewport height on mobile */
+  }
+}
+
+/* Image Styling for About Me Section */
 .about-img {
-    width: 60%;  /* Set a smaller width */
-    height: auto;  /* Maintain aspect ratio */
-    margin: 20px auto;  /* Center the image */
-  }
-  
+  width: 60%;
+  /* Set a smaller width */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin: 20px auto;
+  /* Center the image */
+}
 
-  /* Default Image Styling */
+
+/* Default Image Styling */
 .headshot-img {
-    width: 100%;   /* Full width by default */
-    height: auto;  /* Maintain aspect ratio */
-  }
-  
-  /* Mobile Specific Styling */
-  @media (max-width: 768px) {
-    .headshot-img {
-      width: 75%;  /* Reduce width to 75% on mobile */
-      margin: 10px auto; /* Center with margin */
-    }
+  width: 100%;
+  /* Full width by default */
+  height: auto;
+  /* Maintain aspect ratio */
+}
 
-    .photo-img {
-      width: 75%;  /* Reduce width to 75% on mobile */
-      margin: 10px auto; /* Center with margin */
-    }
+/* Mobile Specific Styling */
+@media (max-width: 768px) {
+  .headshot-img {
+    width: 75%;
+    /* Reduce width to 75% on mobile */
+    margin: 10px auto;
+    /* Center with margin */
   }
+
+  .photo-img {
+    width: 75%;
+    /* Reduce width to 75% on mobile */
+    margin: 10px auto;
+    /* Center with margin */
+  }
+}
+
+/* Site Update Tracker Page */
+.updates-page {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+.updates-hero {
+  background: linear-gradient(135deg, var(--accent-color) 0%, var(--primary-color) 100%);
+  padding: 48px 0 32px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.back-link {
+  color: var(--highlight-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.updates-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+.updates-subtitle,
+.updates-note {
+  max-width: 720px;
+}
+
+.updates-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.run-status {
+  font-size: 0.95rem;
+  color: var(--highlight-color);
+}
+
+.updates-note {
+  font-size: 0.9rem;
+  color: #444;
+  margin-top: 12px;
+}
+
+.status-table {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.status-table thead th {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  color: #444;
+}
+
+.status-table tbody td {
+  vertical-align: middle;
+}
+
+.site-name {
+  font-weight: 600;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-updated {
+  background: #d9f5df;
+  color: #145a32;
+}
+
+.status-unchanged {
+  background: #eef1f4;
+  color: #333;
+}
+
+.status-first-check {
+  background: #fff3cd;
+  color: #7d5a00;
+}
+
+.status-checking {
+  background: #d7ecff;
+  color: #0b4b7a;
+}
+
+.status-error {
+  background: #f8d7da;
+  color: #842029;
+}
+
+.status-never {
+  background: #e8e8e8;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .updates-title {
+    font-size: 2rem;
+  }
+
+  .updates-actions {
+    align-items: flex-start;
+  }
+}
