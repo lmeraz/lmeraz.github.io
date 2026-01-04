@@ -20,6 +20,11 @@ const sites = [
     name: "Clown School Classes",
     url: "https://www.theclownschool.com/specialtyclasseslosangeles"
   },
+  {
+    id: "hyperion",
+    name: "Hyperion Lyric Classes",
+    url: "https://lyrichyperion.com/classes-and-camps"
+  }
 ];
 
 const storageKey = "siteUpdateTracker";
