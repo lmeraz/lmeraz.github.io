@@ -18,11 +18,18 @@
   >
   <meta
     property="og:image"
-    content="https://luismeraz.com/images/headshots/luis-meraz-headshot-theatrical.jpg"
+    content="https://luismeraz.com/images/headshots/luis-meraz-headshot-theatrical-1400.jpg"
   >
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link
+    rel="preload"
+    as="image"
+    href="images/headshots/luis-meraz-headshot-theatrical-1400.jpg"
+    imagesrcset="images/headshots/luis-meraz-headshot-theatrical-800.jpg 800w, images/headshots/luis-meraz-headshot-theatrical-1400.jpg 1400w"
+    imagesizes="(min-width: 960px) 42vw, 88vw"
+  >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -66,18 +73,16 @@
             <a class="button button-primary" href="#media">Watch Reel</a>
             <a class="button button-secondary" href="#resume">View Resume</a>
           </div>
-          <p class="hero-note">
-            Formerly a product engineer at Meta and Lyft, now focused on
-            performance, writing, and collaborative storytelling.
-          </p>
         </div>
 
         <figure class="hero-visual">
           <img
-            src="images/headshots/luis-meraz-headshot-theatrical.jpg"
+            src="images/headshots/luis-meraz-headshot-theatrical-1400.jpg"
+            srcset="images/headshots/luis-meraz-headshot-theatrical-800.jpg 800w, images/headshots/luis-meraz-headshot-theatrical-1400.jpg 1400w"
+            sizes="(min-width: 960px) 42vw, 88vw"
             alt="Studio headshot of Luis Meraz"
-            width="4686"
-            height="5858"
+            width="1400"
+            height="1750"
             fetchpriority="high"
             decoding="async"
           >
@@ -94,9 +99,9 @@
         <div class="section-content">
           <p class="section-intro">
             Luis Meraz is an actor drawn to stories with nerve, humor, and
-            heart. His background in technology sharpened his discipline;
-            performance gave that discipline a pulse. Today he works across
-            acting, writing, and live collaboration with a style that is warm,
+            heart. After building product teams at Meta and Lyft, he redirected
+            that discipline toward performance. Today he works across acting,
+            writing, and live collaboration with a style that is warm,
             specific, and alert to detail.
           </p>
           <div class="about-grid">
@@ -154,13 +159,33 @@
               </p>
             </div>
             <div class="media-embed">
-              <iframe
-                src="https://player.vimeo.com/video/1130100675?h=7a233520f4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479/embed"
-                title="Luis Meraz featured reel"
-                loading="lazy"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+              <button
+                class="media-facade"
+                type="button"
+                data-vimeo-src="https://player.vimeo.com/video/1130100675?h=7a233520f4&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479/embed"
+                data-vimeo-title="Luis Meraz featured reel"
+                aria-label="Play Luis Meraz featured reel"
+              >
+                <img
+                  src="images/reels/featured-reel-poster.jpg"
+                  alt=""
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <span class="media-facade-badge">0:32</span>
+                <span class="media-facade-play">Play reel</span>
+                <span class="visually-hidden">Loads the Vimeo player in place.</span>
+              </button>
+              <noscript>
+                <a
+                  class="button button-secondary media-noscript"
+                  href="https://vimeo.com/1130100675/7a233520f4"
+                  target="_blank"
+                  rel="noopener"
+                >Open featured reel on Vimeo</a>
+              </noscript>
             </div>
           </article>
 
@@ -174,13 +199,33 @@
               </p>
             </div>
             <div class="media-embed">
-              <iframe
-                src="https://player.vimeo.com/video/1130100691?h=9eab30c515&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479/embed"
-                title="Luis Meraz dramatic reel"
-                loading="lazy"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                allowfullscreen
-              ></iframe>
+              <button
+                class="media-facade"
+                type="button"
+                data-vimeo-src="https://player.vimeo.com/video/1130100691?h=9eab30c515&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479/embed"
+                data-vimeo-title="Luis Meraz dramatic reel"
+                aria-label="Play Luis Meraz dramatic reel"
+              >
+                <img
+                  src="images/reels/dramatic-reel-poster.jpg"
+                  alt=""
+                  width="1920"
+                  height="1080"
+                  loading="lazy"
+                  decoding="async"
+                >
+                <span class="media-facade-badge">0:37</span>
+                <span class="media-facade-play">Play reel</span>
+                <span class="visually-hidden">Loads the Vimeo player in place.</span>
+              </button>
+              <noscript>
+                <a
+                  class="button button-secondary media-noscript"
+                  href="https://vimeo.com/1130100691/9eab30c515"
+                  target="_blank"
+                  rel="noopener"
+                >Open dramatic reel on Vimeo</a>
+              </noscript>
             </div>
           </article>
         </div>
@@ -237,10 +282,10 @@
         <div class="photo-grid">
           <figure class="photo-card photo-card-tall">
             <img
-              src="images/photos/do-tell-warm-up-min.jpg"
+              src="images/photos/do-tell-warm-up-1200.jpg"
               alt="Luis Meraz warming up with collaborators in a rehearsal room"
-              width="4160"
-              height="5335"
+              width="1200"
+              height="1539"
               loading="lazy"
               decoding="async"
             >
@@ -248,10 +293,10 @@
           </figure>
           <figure class="photo-card">
             <img
-              src="images/photos/do-tell-directing-min.jpg"
+              src="images/photos/do-tell-directing-1200.jpg"
               alt="Luis Meraz directing on set"
-              width="4160"
-              height="6240"
+              width="1200"
+              height="1800"
               loading="lazy"
               decoding="async"
             >
@@ -259,10 +304,10 @@
           </figure>
           <figure class="photo-card">
             <img
-              src="images/photos/luis-sailing-min.jpg"
+              src="images/photos/luis-sailing-960.jpg"
               alt="Luis Meraz sailing on the water"
-              width="1536"
-              height="2048"
+              width="960"
+              height="1280"
               loading="lazy"
               decoding="async"
             >
@@ -270,10 +315,10 @@
           </figure>
           <figure class="photo-card">
             <img
-              src="images/photos/luis-surfing-min.png"
+              src="images/photos/luis-surfing-720.jpg"
               alt="Luis Meraz carrying a surfboard"
-              width="384"
-              height="678"
+              width="720"
+              height="1271"
               loading="lazy"
               decoding="async"
             >
@@ -309,5 +354,20 @@
       <p>&copy; 2026 Luis Meraz</p>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll(".media-facade").forEach((button) => {
+      button.addEventListener("click", () => {
+        const iframe = document.createElement("iframe");
+        iframe.src = button.dataset.vimeoSrc;
+        iframe.title = button.dataset.vimeoTitle;
+        iframe.loading = "lazy";
+        iframe.allow = "autoplay; fullscreen; picture-in-picture; clipboard-write";
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.setAttribute("allowfullscreen", "");
+        button.replaceWith(iframe);
+      }, { once: true });
+    });
+  </script>
 </body>
 </html>
