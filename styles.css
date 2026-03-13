@@ -196,7 +196,7 @@ a {
 .section-copy,
 .contact-copy,
 .media-card p,
- .info-card p {
+.info-card p {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
@@ -253,22 +253,22 @@ a {
   border-radius: 999px;
   text-decoration: none;
   font-weight: 700;
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .button:hover {
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-deep) 100%);
+  background: var(--accent-deep);
   color: #fff7f1;
-  box-shadow: 0 16px 32px rgba(95, 33, 24, 0.28);
+  border: 1px solid var(--accent-deep);
 }
 
 .button-secondary {
-  border: 1px solid rgba(24, 19, 16, 0.16);
-  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(24, 19, 16, 0.18);
+  background: rgba(255, 255, 255, 0.78);
   color: var(--text);
 }
 
