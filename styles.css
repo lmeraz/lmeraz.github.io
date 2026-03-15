@@ -1,12 +1,18 @@
 :root {
-  --primary-color: #f5f5dc;
-  --secondary-color: #e0e0e0;
-  --accent-color: #f9e0e6;
-  --highlight-color: #333;
-  --text-color: #000;
-  --focus-ring: #111;
-  --overlay-strong: rgba(0, 0, 0, 0.42);
-  --overlay-soft: rgba(0, 0, 0, 0.16);
+  --primary-color: #fffdf9;
+  --secondary-color: #d7ddd7;
+  --accent-color: #cfaea3;
+  --highlight-color: #252831;
+  --text-color: #17161a;
+  --focus-ring: #17161a;
+  --resume-color: #e6d9c9;
+  --contact-color: #fffdf9;
+  --overlay-strong: rgba(17, 20, 28, 0.44);
+  --overlay-soft: rgba(17, 20, 28, 0.18);
+  --reel-ui-color: rgba(186, 186, 186, 0.88);
+  --reel-ui-line: rgba(186, 186, 186, 0.68);
+  --reel-ui-surface: rgba(186, 186, 186, 0.58);
+  --reel-ui-icon: rgba(110, 110, 110, 0.88);
 }
 
 html {
@@ -128,7 +134,7 @@ section h3 {
 }
 
 #resume {
-  background-color: #efe3cf;
+  background-color: var(--resume-color);
 }
 
 #media {
@@ -136,7 +142,7 @@ section h3 {
 }
 
 #contact {
-  background-color: #fff;
+  background-color: var(--contact-color);
 }
 
 .about-picture {
@@ -188,16 +194,23 @@ section h3 {
   top: 1rem;
   left: 1rem;
   z-index: 1;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  background-color: rgba(0, 0, 0, 0.58);
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--reel-ui-color);
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.38);
+}
+
+.reel-card__label::before {
+  content: "";
+  width: 1.5rem;
+  height: 1px;
+  background-color: var(--reel-ui-line);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.24);
 }
 
 .reel-card__play {
@@ -207,9 +220,10 @@ section h3 {
   width: 4.25rem;
   height: 4.25rem;
   border-radius: 999px;
-  background-color: rgba(255, 255, 255, 0.88);
-  color: var(--highlight-color);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.24);
+  background-color: var(--reel-ui-surface);
+  color: var(--reel-ui-icon);
+  box-shadow: 0 10px 26px rgba(27, 30, 36, 0.18);
+  backdrop-filter: blur(3px);
 }
 
 .reel-card__play-icon {
