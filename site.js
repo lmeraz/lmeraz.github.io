@@ -1,9 +1,29 @@
-const vimeoCards = document.querySelectorAll('[data-vimeo-id]');
-const copyrightYear = document.getElementById('copyright-year');
+/* ── Scroll reveal ──────────────────────────────────── */
+const reveals = document.querySelectorAll('.reveal:not(.hero .reveal)');
+const observer = new IntersectionObserver(
+  (entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }
+  },
+  { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+);
 
+for (const el of reveals) {
+  observer.observe(el);
+}
+
+/* ── Copyright year ────────────────────────────────── */
+const copyrightYear = document.getElementById('copyright-year');
 if (copyrightYear) {
   copyrightYear.textContent = String(new Date().getFullYear());
 }
+
+/* ── Vimeo embed ───────────────────────────────────── */
+const vimeoCards = document.querySelectorAll('[data-vimeo-id]');
 
 function isModifiedClick(event) {
   return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
