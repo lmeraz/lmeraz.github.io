@@ -47,5 +47,5 @@ for (const card of vimeoCards) {
 
     event.preventDefault();
     swapCardForEmbed(card);
-  });
+  }, { once: true });
 }

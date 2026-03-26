@@ -7,7 +7,7 @@
    <title>Luis Meraz | Actor</title>
    <meta name="description"
       content="Luis Meraz is a bilingual Mexican American actor in Los Angeles who acts, improvises, clowns, writes, and produces theater and shorts through Do Tell.">
-   <meta name="theme-color" content="#f5f5dc">
+   <meta name="theme-color" content="#fffdf9">
    <link rel="canonical" href="https://luismeraz.com/">
    <meta property="og:type" content="website">
    <meta property="og:site_name" content="Luis Meraz">
@@ -33,7 +33,7 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" href="styles.css">
    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&family=Montserrat:wght@600;700&display=swap"
       rel="stylesheet">
    <script type="application/ld+json">
       {
@@ -94,6 +94,11 @@
 </head>
 
 <body>
+   <svg hidden aria-hidden="true">
+      <symbol id="icon-play" viewBox="0 0 24 24">
+         <path d="M8 6.5v11l9-5.5-9-5.5z" />
+      </symbol>
+   </svg>
    <a class="skip-link" href="#main-content">Skip to content</a>
    <div class="container-fluid g-0">
       <main id="main-content">
@@ -156,9 +161,8 @@
          <section id="media" class="py-5 text-center" aria-labelledby="media-heading">
             <div class="container">
                <h2 id="media-heading">Media</h2>
-               <div class="mb-5">
-                  <h3>Reels</h3>
-                  <div class="row">
+               <h3>Reels</h3>
+                  <div class="row mb-5">
                      <div class="col-md-6">
                         <a class="reel-card" href="https://vimeo.com/1130100675" target="_blank" rel="noopener noreferrer"
                            data-vimeo-id="1130100675" data-vimeo-hash="7a233520f4"
@@ -175,9 +179,8 @@
                            <span class="reel-card__overlay" aria-hidden="true">
                               <span class="reel-card__label">Comedy</span>
                               <span class="reel-card__play">
-                                 <svg viewBox="0 0 24 24" class="reel-card__play-icon" aria-hidden="true"
-                                    focusable="false">
-                                    <path d="M8 6.5v11l9-5.5-9-5.5z"></path>
+                                 <svg class="reel-card__play-icon" aria-hidden="true" focusable="false">
+                                    <use href="#icon-play" />
                                  </svg>
                               </span>
                            </span>
@@ -199,18 +202,15 @@
                            <span class="reel-card__overlay" aria-hidden="true">
                               <span class="reel-card__label">Drama</span>
                               <span class="reel-card__play">
-                                 <svg viewBox="0 0 24 24" class="reel-card__play-icon" aria-hidden="true"
-                                    focusable="false">
-                                    <path d="M8 6.5v11l9-5.5-9-5.5z"></path>
+                                 <svg class="reel-card__play-icon" aria-hidden="true" focusable="false">
+                                    <use href="#icon-play" />
                                  </svg>
                               </span>
                            </span>
                         </a>
                      </div>
                   </div>
-               </div>
-               <div class="mt-5">
-                  <h3 class="text-center">Photos</h3>
+               <h3 class="text-center mt-5">Photos</h3>
                   <div class="row g-0">
                      <div class="col-md-2 col-sm-3 p-0 photo-tile">
                         <picture class="gallery-picture">
@@ -263,7 +263,6 @@
                         </picture>
                      </div>
                   </div>
-               </div>
             </div>
          </section>
          <section id="resume" class="py-5 text-center" aria-labelledby="resume-heading">
