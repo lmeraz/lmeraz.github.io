@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SignupForm from '../components/SignupForm.astro';
+import { getCollection } from 'astro:content';
+
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 5);
+---
+
+<BaseLayout
+  title="Newsletter"
+  description="Subscribe to Luis Meraz's newsletter — posts on MCP, Apple integration, local-first architecture, and indie software."
+>
+  <section class="section">
+    <div class="container" style="max-width: 36rem;">
+      <h1 class="reveal" style="margin-bottom: 0.75rem;">Newsletter</h1>
+      <div class="prose reveal">
+        <p>
+          I'll write you quarterly about all the fun things I'm up to and how to join the fun.
+        </p>
+        <p><strong>Let's make the world fun again.</strong></p>
+      </div>
+      <div class="reveal" style="margin: 2rem 0;">
+        <SignupForm heading="" description="" />
+      </div>
+      {recentPosts.length > 0 && (
+        <div class="reveal">
+          <p class="label" style="margin-bottom: 0.75rem;">Recent posts</p>
+          <ul style="list-style: none;">
+            {recentPosts.map(post => (
+              <li style="margin-bottom: 0.5rem;">
+                <a href={`/blog/${post.id}`} style="color: var(--accent); font-style: italic;">
+                  {post.data.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>

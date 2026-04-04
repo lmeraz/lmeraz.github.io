@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Luis Meraz — actor and builder in Los Angeles. Building Apple MCP Bridge, writing about MCP and local-first architecture."
+>
+  <section class="section">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text">
+          <p class="label reveal" style="margin-bottom: 0.5rem;">About</p>
+          <h1 class="reveal" style="margin-bottom: 1.5rem;">The short version</h1>
+
+          <div class="prose reveal">
+            <p>
+              I am an actor, clown, and person that is pretty good at problem
+              solving... like really good. I'm not going to lie.
+            </p>
+            <p>
+              But then at some point you realize — oh, the problem is the fun.
+              I did all the things people told me I was supposed to do, and at the
+              end of it I asked, "now what?"
+            </p>
+            <p>
+              That's when I returned home to the small things that bring me delight
+              as I continue to follow my bliss.
+              I can tell you all about the fancy places I worked at and the nice things
+              I've done, but honestly I'm more than all of that put together. And so are you.
+            </p>
+            <p>
+              I'm still coding — because it's fun again, thanks to AI. But I'm also
+              putting my attention back on the things that matter to me, and that's been
+              the art of fucking around and finding out with my merry clown friends.
+            </p>
+            <p>
+              Oh, and I have a dog named Manny.
+            </p>
+          </div>
+        </div>
+        <div class="about__image reveal">
+          <picture>
+            <source type="image/avif" srcset="/images/optimized/photos/luis-sailing-640.avif" />
+            <img
+              src="/images/optimized/photos/luis-sailing-640.jpg"
+              width="1536"
+              height="2048"
+              alt="Luis Meraz sailing"
+              class="about__photo"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .about__photo {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    position: sticky;
+    top: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about__photo {
+      position: static;
+      max-height: 50vh;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+  }
+</style>
