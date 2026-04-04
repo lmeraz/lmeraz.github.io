@@ -1,0 +1,110 @@
+---
+interface Props {
+  vimeoId: string;
+  vimeoHash: string;
+  title: string;
+  label: string;
+  posterWebp: string;
+  posterJpg: string;
+}
+
+const { vimeoId, vimeoHash, title, label, posterWebp, posterJpg } = Astro.props;
+---
+
+<a
+  class="reel-card"
+  href={`https://vimeo.com/${vimeoId}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-vimeo-id={vimeoId}
+  data-vimeo-hash={vimeoHash}
+  data-vimeo-title={title}
+  aria-label={`Play ${title}`}
+>
+  <picture class="reel-picture">
+    <source type="image/webp" srcset={posterWebp} />
+    <img src={posterJpg} width="960" height="540" class="reel-poster" alt={`${title} preview`} loading="lazy" decoding="async" />
+  </picture>
+  <span class="reel-card__overlay" aria-hidden="true">
+    <span class="reel-card__label">{label}</span>
+    <span class="reel-card__play">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+        <path d="M8 6.5v11l9-5.5-9-5.5z" />
+      </svg>
+    </span>
+  </span>
+</a>
+
+<style>
+  .reel-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #1a1718;
+    border-radius: 4px;
+  }
+  .reel-picture, .reel-poster { width: 100%; height: 100%; }
+  .reel-poster { object-fit: cover; transition: transform 0.6s var(--ease-out); }
+  .reel-card:hover .reel-poster { transform: scale(1.04); }
+
+  .reel-card__overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(180deg, rgba(30,27,24,0.05), rgba(30,27,24,0.45));
+  }
+
+  .reel-card__label {
+    position: absolute; top: 1rem; left: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .reel-card__label::before {
+    content: ''; width: 1.25rem; height: 1px;
+    background-color: rgba(255,255,255,0.5);
+  }
+
+  .reel-card__play {
+    display: flex; align-items: center; justify-content: center;
+    width: 3.5rem; height: 3.5rem; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.2);
+    transition: transform 0.4s var(--ease-out), background-color 0.4s ease;
+  }
+  .reel-card:hover .reel-card__play { transform: scale(1.1); background-color: rgba(255,255,255,0.28); }
+  .reel-card__play svg { margin-left: 2px; }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLAnchorElement>('.reel-card[data-vimeo-id]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || (e as MouseEvent).button !== 0) return;
+      e.preventDefault();
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'reel-frame';
+      wrapper.style.cssText = 'position:relative;display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#1a1718;border-radius:4px;';
+
+      const url = new URL(`https://player.vimeo.com/video/${card.dataset.vimeoId}`);
+      if (card.dataset.vimeoHash) url.searchParams.set('h', card.dataset.vimeoHash);
+      url.searchParams.set('autoplay', '1');
+      url.searchParams.set('dnt', '1');
+
+      const iframe = document.createElement('iframe');
+      iframe.src = url.toString();
+      iframe.title = card.dataset.vimeoTitle ?? '';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write';
+      iframe.allowFullscreen = true;
+      iframe.style.cssText = 'width:100%;height:100%;border:0;';
+
+      wrapper.appendChild(iframe);
+      card.replaceWith(wrapper);
+      iframe.focus();
+    }, { once: true });
+  });
+</script>

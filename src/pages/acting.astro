@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReelCard from '../components/ReelCard.astro';
+import Gallery from '../components/Gallery.astro';
+
+const photos = [
+  { avif: '/images/optimized/photos/luis-sailing-640.avif', jpg: '/images/optimized/photos/luis-sailing-640.jpg', width: 1536, height: 2048, alt: 'Luis Meraz sailing on the water' },
+  { avif: '/images/optimized/photos/do-tell-warm-up-640.avif', jpg: '/images/optimized/photos/do-tell-warm-up-640.jpg', width: 4160, height: 5335, alt: 'Luis Meraz leading a Do Tell warm-up' },
+  { avif: '/images/optimized/photos/luis-surfing-384.avif', jpg: '/images/optimized/photos/luis-surfing-384.jpg', width: 384, height: 678, alt: 'Luis Meraz surfing in open water' },
+  { avif: '/images/optimized/photos/luis-zach-smackdown-breath-640.avif', jpg: '/images/optimized/photos/luis-zach-smackdown-breath-640.jpg', width: 4160, height: 5436, alt: 'Luis Meraz and Zach performing in Smackdown' },
+  { avif: '/images/optimized/photos/do-tell-directing-640.avif', jpg: '/images/optimized/photos/do-tell-directing-640.jpg', width: 4160, height: 6240, alt: 'Luis Meraz directing a Do Tell production' },
+  { avif: '/images/optimized/photos/luis-zach-smackdown-stunned-640.avif', jpg: '/images/optimized/photos/luis-zach-smackdown-stunned-640.jpg', width: 3758, height: 5215, alt: 'Luis Meraz and Zach reacting in Smackdown' },
+];
+---
+
+<BaseLayout
+  title="Acting"
+  description="Luis Meraz is a bilingual Mexican American actor in Los Angeles who acts, improvises, clowns, writes, and produces."
+>
+  {/* Hero */}
+  <section class="acting-hero">
+    <div class="acting-hero__image">
+      <picture>
+        <source
+          type="image/avif"
+          srcset="/images/optimized/headshots/luis-meraz-headshot-theatrical-900.avif 900w, /images/optimized/headshots/luis-meraz-headshot-theatrical-1600.avif 1600w"
+          sizes="100vw"
+        />
+        <img
+          src="/images/optimized/headshots/luis-meraz-headshot-theatrical-1600.jpg"
+          srcset="/images/optimized/headshots/luis-meraz-headshot-theatrical-900.jpg 900w, /images/optimized/headshots/luis-meraz-headshot-theatrical-1600.jpg 1600w"
+          sizes="100vw"
+          width="4686"
+          height="5858"
+          alt="Luis Meraz theatrical headshot"
+          class="acting-hero__photo"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </picture>
+      <div class="acting-hero__vignette"></div>
+    </div>
+    <div class="acting-hero__text">
+      <p class="label reveal" style="color: var(--accent-soft);">Actor</p>
+      <h1 class="acting-hero__name reveal">Luis<br>Meraz</h1>
+      <p class="acting-hero__location reveal">Los Angeles</p>
+    </div>
+  </section>
+
+  {/* About */}
+  <section class="section" style="background-color: var(--bg-warm);">
+    <div class="container">
+      <h2 class="reveal" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">About</h2>
+      <div class="prose reveal" style="max-width: 36rem;">
+        <p>
+          I'm Luis, a bilingual Mexican American actor passionate about storytelling.
+          I used to code at Meta and Lyft. I now inspire people to lead with courage, love,
+          and joy through delight in my craft. I act, improvise, clown, and write.
+          My production company, Do Tell, produces theater and shorts with rave reviews.
+          Beyond entertainment, I surf, sail, DJ, and hike with my dog, Manny.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Reels */}
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">Reels</h2>
+      <div class="reels-grid">
+        <div class="reveal">
+          <ReelCard
+            vimeoId="1130100675"
+            vimeoHash="7a233520f4"
+            title="Luis Meraz comedy reel"
+            label="Comedy"
+            posterWebp="https://i.vimeocdn.com/video/2074097254-ef6aef6271b526162af24420351be4343403e89c2d7a57b255cb0b6890fe8f01-d?f=webp&mw=960&q=85"
+            posterJpg="https://i.vimeocdn.com/video/2074097254-ef6aef6271b526162af24420351be4343403e89c2d7a57b255cb0b6890fe8f01-d?mw=960&q=85"
+          />
+        </div>
+        <div class="reveal">
+          <ReelCard
+            vimeoId="1130100691"
+            vimeoHash="9eab30c515"
+            title="Luis Meraz dramatic reel"
+            label="Drama"
+            posterWebp="https://i.vimeocdn.com/video/2074097561-483022c7faaf89671864d48981f573f8f00b1d69cd234abe0402ae341108606e-d?f=webp&mw=960&q=85"
+            posterJpg="https://i.vimeocdn.com/video/2074097561-483022c7faaf89671864d48981f573f8f00b1d69cd234abe0402ae341108606e-d?mw=960&q=85"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* Photos */}
+  <section class="section" style="background-color: var(--bg-warm);">
+    <div class="container">
+      <h2 class="reveal" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">Photos</h2>
+      <Gallery photos={photos} />
+    </div>
+  </section>
+
+  {/* Resume */}
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">Resume</h2>
+      <div class="reveal">
+        <iframe
+          src="/files/luis-meraz-actor-resume.pdf#toolbar=0"
+          title="Luis Meraz acting resume PDF"
+          class="resume-frame"
+        ></iframe>
+      </div>
+      <div class="reveal" style="text-align: center; margin-top: 1.5rem;">
+        <a href="/files/luis-meraz-actor-resume.pdf" class="btn-secondary">
+          Download Resume &darr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact */}
+  <section class="section" style="background-color: var(--bg-accent); min-height: 40vh; display: flex; align-items: center;">
+    <div class="container">
+      <h2 class="reveal" style="font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 0.95; border: none; padding: 0; margin-bottom: 1rem;">
+        Let's<br>Work Together
+      </h2>
+      <div class="reveal">
+        <p style="font-family: var(--font-heading); font-size: 0.82rem; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.5rem;">@itsluismeraz</p>
+        <a href="mailto:contact@luismeraz.com" class="contact-email">contact@luismeraz.com</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .acting-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #2a2420;
+  }
+  .acting-hero__image { position: absolute; inset: -1px; }
+  .acting-hero__photo { width: 100%; height: 100%; object-fit: cover; object-position: center 50%; }
+  .acting-hero__vignette {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(30,27,24,0.05) 0%, rgba(30,27,24,0) 40%, rgba(30,27,24,0.25) 70%, rgba(30,27,24,0.82) 100%);
+  }
+  .acting-hero__text {
+    position: relative; z-index: 2;
+    padding: 0 clamp(1.5rem, 5vw, 5rem) clamp(2rem, 6vh, 4rem);
+    width: 100%;
+  }
+  .acting-hero__name {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    font-weight: 400; font-style: italic;
+    line-height: 0.9; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 0.5rem;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.15);
+  }
+  .acting-hero__location {
+    font-family: var(--font-heading);
+    font-size: 0.78rem; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+  }
+  .acting-hero .reveal {
+    opacity: 0; transform: translateY(1.5rem);
+    animation: heroReveal 0.8s var(--ease-out) forwards;
+  }
+  @keyframes heroReveal { to { opacity: 1; transform: translateY(0); } }
+  .acting-hero .reveal:nth-child(1) { animation-delay: 0.2s; }
+  .acting-hero .reveal:nth-child(2) { animation-delay: 0.4s; }
+  .acting-hero .reveal:nth-child(3) { animation-delay: 0.6s; }
+
+  .reels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .resume-frame {
+    display: block; width: 100%; max-width: 56rem;
+    height: 360px; margin: 0 auto;
+    border: 0; border-radius: 4px;
+    background-color: #fff;
+  }
+
+  .contact-email {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    font-style: italic;
+    color: var(--accent);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .contact-email:hover { border-bottom-color: var(--accent); }
+
+  @media (max-width: 768px) {
+    .acting-hero { height: 70vh; }
+    .reels-grid { grid-template-columns: 1fr; }
+    .resume-frame { height: 280px; }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+interface Photo {
+  avif: string;
+  jpg: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+interface Props {
+  photos: Photo[];
+}
+
+const { photos } = Astro.props;
+---
+
+<div class="gallery">
+  {photos.map(photo => (
+    <div class="gallery__item reveal">
+      <picture>
+        <source type="image/avif" srcset={photo.avif} />
+        <img
+          src={photo.jpg}
+          width={photo.width}
+          height={photo.height}
+          class="gallery-media"
+          alt={photo.alt}
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+    </div>
+  ))}
+</div>
+
+<style>
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .gallery__item { overflow: hidden; border-radius: 3px; }
+  .gallery-media {
+    width: 100%; height: 100%;
+    aspect-ratio: 3 / 4; object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+  .gallery__item:hover .gallery-media { transform: scale(1.04); }
+
+  @media (max-width: 768px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .gallery { grid-template-columns: 1fr; } }
+</style>
