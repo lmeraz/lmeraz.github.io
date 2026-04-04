@@ -100,13 +100,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     max-width: 32rem;
   }
 
-  .hero__link {
-    color: var(--accent);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.3s ease;
-  }
-
-  .hero__link:hover { border-bottom-color: var(--accent); }
 
   .hero__ctas {
     display: flex;
