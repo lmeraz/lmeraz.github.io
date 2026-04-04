@@ -54,3 +54,41 @@ const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImageUrl} />
 <meta name="twitter:image:alt" content={`${title} — Luis Meraz`} />
+
+{/* JSON-LD */}
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "Luis Meraz",
+    },
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      name: "Luis Meraz",
+      url: siteUrl,
+      jobTitle: "Actor & Software Developer",
+      email: "mailto:contact@luismeraz.com",
+      sameAs: [
+        "https://www.imdb.com/name/nm16037724/",
+        "https://www.instagram.com/itsluismeraz",
+        "https://www.tiktok.com/@itsluismeraz",
+        "https://github.com/lmeraz",
+      ],
+    },
+    ...(ogType === 'article' ? [{
+      "@type": "Article",
+      headline: title,
+      description: description,
+      image: ogImageUrl,
+      datePublished: publishedTime,
+      dateModified: modifiedTime ?? publishedTime,
+      author: { "@id": `${siteUrl}/#person` },
+      publisher: { "@id": `${siteUrl}/#person` },
+      mainEntityOfPage: canonical,
+    }] : []),
+  ],
+})} />
