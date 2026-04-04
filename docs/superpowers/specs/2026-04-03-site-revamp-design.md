@@ -182,7 +182,7 @@ Generates all meta tags from page props. Included in `BaseLayout.astro`.
 ### Blog Listing (`/blog`)
 
 - Post list: title (italic serif), date, reading time, category pill, tags, one-line description
-- Filter bar: filter by category (five pillars) and/or tag, URL-driven (`/blog?category=Performance`)
+- Filter bar: client-side JS filter by category (five pillars) and/or tag. No page reload — filters the visible list in place.
 - Pagination at ~15 posts: static `/blog/2`, `/blog/3`, etc.
 
 ### Blog Post (`/blog/[slug]`)
