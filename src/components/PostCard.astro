@@ -19,8 +19,7 @@ const formattedDate = pubDate.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
-// Auto-calculate reading time if not provided (rough: handled at collection level too)
-const displayTime = readingTime ?? '5';
+const displayTime = readingTime ?? 5;
 ---
 
 <article class="post-card">
