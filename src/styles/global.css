@@ -96,6 +96,13 @@ code, pre {
   padding: clamp(2.5rem, 6vh, 4.5rem) 0;
 }
 
+/* ── Section headings ──────────────────────────── */
+.section-heading {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
 /* ── Labels ────────────────────────────────────── */
 .label {
   font-family: var(--font-heading);

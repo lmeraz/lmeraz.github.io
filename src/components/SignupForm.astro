@@ -3,20 +3,18 @@ interface Props {
   heading?: string;
   description?: string;
   tag?: string;
-  compact?: boolean;
 }
 
 const {
   heading = 'Stay in the loop',
   description = 'Posts on MCP, Apple integration, and indie software. ~Weekly, no spam.',
   tag,
-  compact = false,
 } = Astro.props;
 ---
 
-<div class:list={['signup-form', { 'signup-form--compact': compact }]}>
-  {!compact && heading && <p class="signup-form__heading">{heading}</p>}
-  {!compact && description && <p class="signup-form__description">{description}</p>}
+<div class="signup-form">
+  {heading && <p class="signup-form__heading">{heading}</p>}
+  {description && <p class="signup-form__description">{description}</p>}
   <form
     action="https://buttondown.com/api/emails/embed-subscribe/luismeraz"
     method="post"
@@ -57,10 +55,6 @@ const {
     display: flex;
     gap: 0.5rem;
     max-width: 28rem;
-  }
-
-  .signup-form--compact .signup-form__form {
-    max-width: none;
   }
 
   .signup-form__input {

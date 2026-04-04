@@ -28,9 +28,7 @@ const { tag, posts } = Astro.props;
   <section class="section">
     <div class="container">
       <p class="label" style="margin-bottom: 0.5rem;">Tag</p>
-      <h1 style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
-        {tag}
-      </h1>
+      <h1 class="section-heading">{tag}</h1>
       <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
         {posts.length} {posts.length === 1 ? 'post' : 'posts'}
         &middot; <a href="/blog" style="color: var(--accent);">View all posts</a>

@@ -36,7 +36,7 @@ const dataSources = ['Calendar', 'Contacts', 'Notes', 'Reminders'];
   {/* How it works */}
   <section class="section" style="background-color: var(--bg-warm);">
     <div class="container">
-      <h2 class="reveal" style="margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">How it works</h2>
+      <h2 class="reveal section-heading" style="margin-bottom: 2rem;">How it works</h2>
       <div class="flow reveal">
         <div class="flow__step">
           <p class="flow__label">Your data</p>
@@ -74,7 +74,7 @@ const dataSources = ['Calendar', 'Contacts', 'Notes', 'Reminders'];
   {/* Performance */}
   <section class="section">
     <div class="container">
-      <h2 class="reveal" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">Performance</h2>
+      <h2 class="reveal section-heading">Performance</h2>
       <div class="perf reveal">
         <div class="perf__card perf__card--local">
           <p class="perf__value">2-4ms</p>
@@ -114,7 +114,7 @@ const dataSources = ['Calendar', 'Contacts', 'Notes', 'Reminders'];
   {/* Roadmap */}
   <section class="section">
     <div class="container">
-      <h2 class="reveal" style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">Roadmap</h2>
+      <h2 class="reveal section-heading">Roadmap</h2>
       <div class="roadmap">
         {phases.map(phase => (
           <div class:list={['roadmap__phase', 'reveal', { 'roadmap__phase--current': phase.status === 'current' }]}>

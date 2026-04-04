@@ -2,11 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getCollection } from 'astro:content';
+import { CATEGORIES } from '../../content.config';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const categories = ['All', 'Apple Integration', 'Performance', 'MCP Ecosystem', 'Build Log', 'Philosophy'];
+const categories = ['All', ...CATEGORIES];
 const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 ---
 
@@ -117,16 +118,18 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
 </style>
 
 <script>
-  const filters = document.getElementById('blog-filters');
-  const postsContainer = document.getElementById('blog-posts');
-  const emptyMsg = document.getElementById('blog-empty');
-  if (!filters || !postsContainer || !emptyMsg) throw new Error('Missing filter elements');
+  const filters = document.getElementById('blog-filters')!;
+  const postsContainer = document.getElementById('blog-posts')!;
+  const emptyMsg = document.getElementById('blog-empty')!;
+
+  const items = Array.from(postsContainer.querySelectorAll<HTMLElement>('.blog-listing__item'));
+  const categoryBtns = Array.from(filters.querySelectorAll<HTMLButtonElement>('.filter-btn'));
+  const tagBtns = Array.from(filters.querySelectorAll<HTMLButtonElement>('.filter-tag'));
 
   let activeCategory = 'All';
   let activeTag: string | null = null;
 
   function applyFilters() {
-    const items = postsContainer.querySelectorAll<HTMLElement>('.blog-listing__item');
     let visibleCount = 0;
 
     items.forEach(item => {
@@ -142,25 +145,23 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
     emptyMsg.hidden = visibleCount > 0;
   }
 
-  // Category buttons
-  filters.querySelectorAll<HTMLButtonElement>('.filter-btn').forEach(btn => {
+  categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('filter-btn--active'));
+      categoryBtns.forEach(b => b.classList.remove('filter-btn--active'));
       btn.classList.add('filter-btn--active');
       activeCategory = btn.dataset.category ?? 'All';
       applyFilters();
     });
   });
 
-  // Tag buttons
-  filters.querySelectorAll<HTMLButtonElement>('.filter-tag').forEach(btn => {
+  tagBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const tag = btn.dataset.tag ?? '';
       if (activeTag === tag) {
         activeTag = null;
         btn.classList.remove('filter-tag--active');
       } else {
-        filters.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('filter-tag--active'));
+        tagBtns.forEach(b => b.classList.remove('filter-tag--active'));
         btn.classList.add('filter-tag--active');
         activeTag = tag;
       }

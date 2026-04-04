@@ -4,17 +4,17 @@ import SignupForm from './SignupForm.astro';
 const year = new Date().getFullYear();
 
 const socials = [
-  { href: 'https://www.imdb.com/name/nm16037724/', label: 'IMDb', icon: 'imdb' },
-  { href: 'https://www.instagram.com/itsluismeraz', label: 'Instagram', icon: 'instagram' },
-  { href: 'https://www.tiktok.com/@itsluismeraz', label: 'TikTok', icon: 'tiktok' },
-  { href: 'https://github.com/lmeraz', label: 'GitHub', icon: 'github' },
+  { href: 'https://www.imdb.com/name/nm16037724/', label: 'IMDb' },
+  { href: 'https://www.instagram.com/itsluismeraz', label: 'Instagram' },
+  { href: 'https://www.tiktok.com/@itsluismeraz', label: 'TikTok' },
+  { href: 'https://github.com/lmeraz', label: 'GitHub' },
 ];
 ---
 
 <footer class="site-footer">
   <div class="footer__inner container">
     <div class="footer__signup">
-      <SignupForm compact heading="" description="" />
+      <SignupForm heading="" description="" />
     </div>
     <div class="footer__bottom">
       <ul class="footer__socials">
