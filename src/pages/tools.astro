@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    name: 'Everything MCP',
+    description: 'I got bored one day and decided to put everything on a bagel. MCP.',
+    status: 'coming soon',
+  },
+];
+---
+
+<BaseLayout
+  title="Tools"
+  description="Things Luis Meraz has built for fun and some profit."
+>
+  <section class="section tools-hero">
+    <div class="container">
+      <p class="label reveal">Tools</p>
+      <h1 class="tools-hero__title reveal">Things I've Built for<br>Fun and Some Profit</h1>
+      <p class="tools-hero__tags reveal">
+        APIs &middot; CLIs &middot; Apps &middot; AI &middot; MCP &middot; and more
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="background-color: var(--bg-warm);">
+    <div class="container">
+      <div class="project-gallery">
+        {projects.map(project => (
+          <div class="project-card reveal">
+            <div class="project-card__header">
+              <h2 class="project-card__name">{project.name}</h2>
+              <span class="project-card__status">{project.status}</span>
+            </div>
+            <p class="project-card__description">{project.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tools-hero { padding: clamp(3rem, 8vh, 6rem) 0; }
+  .tools-hero__title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 1.25rem; }
+  .tools-hero__tags {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+  }
+
+  .project-card:hover { border-color: var(--accent); }
+
+  .project-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+  }
+
+  .project-card__name {
+    font-size: 1.3rem;
+    margin: 0;
+    border: none;
+    padding: 0;
+  }
+
+  .project-card__status {
+    font-family: var(--font-heading);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .project-card__description {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+</style>
