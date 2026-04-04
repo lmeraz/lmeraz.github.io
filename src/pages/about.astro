@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="About"
+  description="Luis Meraz — actor and builder in Los Angeles. Building Apple MCP Bridge, writing about MCP and local-first architecture."
+>
+  <section class="section">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__text">
+          <p class="label reveal" style="margin-bottom: 0.5rem;">About</p>
+          <h1 class="reveal" style="margin-bottom: 1.5rem;">The short version</h1>
+
+          <div class="prose reveal">
+            <p>
+              I'm Luis, a bilingual Mexican American in Los Angeles. I act, improvise, clown,
+              write, and produce theater and shorts through my company,
+              <strong>Do Tell</strong>. I used to write code at Meta and Lyft.
+            </p>
+            <p>
+              Now I'm building <a href="/apple-mcp-bridge">Apple MCP Bridge</a> — a lightweight
+              macOS app that makes your Apple data (calendars, contacts, notes, reminders)
+              available to any AI agent via MCP. Think of it as Spotlight for AI agents.
+            </p>
+            <p>
+              I'm building this because I hoard my personal data and want it portable to any AI
+              agent — not locked inside one company's walled garden. Everything stays on your device.
+              No servers, no cloud sync, no data liability.
+            </p>
+            <p>
+              This site is where I write about the process: the architecture decisions, the
+              performance benchmarks, the inevitable wrong turns. I also write about MCP, local-first
+              principles, Apple integration quirks, and the indie software ethos.
+            </p>
+            <p>
+              I'm not trying to take over the world. I want a product I can care for, love, share,
+              and live comfortably with — in the spirit of Sublime Text, Obsidian, and Panic.
+            </p>
+            <p>
+              Beyond all of that, I surf, sail, DJ, and hike with my dog, Manny.
+            </p>
+          </div>
+        </div>
+        <div class="about__image reveal">
+          <picture>
+            <source type="image/avif" srcset="/images/optimized/photos/luis-sailing-640.avif" />
+            <img
+              src="/images/optimized/photos/luis-sailing-640.jpg"
+              width="1536"
+              height="2048"
+              alt="Luis Meraz sailing"
+              class="about__photo"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .about__photo {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    position: sticky;
+    top: 5rem;
+  }
+
+  @media (max-width: 768px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about__photo {
+      position: static;
+      max-height: 50vh;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+  }
+</style>
