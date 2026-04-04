@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const categories = ['All', 'Apple Integration', 'Performance', 'MCP Ecosystem', 'Build Log', 'Philosophy'];
+const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+---
+
+<BaseLayout
+  title="Blog"
+  description="Technical blog on MCP connectors, Apple integration, local-first architecture, and building indie software."
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="blog-listing__title">Writing</h1>
+
+      <div class="blog-listing__filters" id="blog-filters">
+        <div class="blog-listing__categories">
+          {categories.map(cat => (
+            <button
+              class:list={['filter-btn', { 'filter-btn--active': cat === 'All' }]}
+              data-category={cat}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div class="blog-listing__tags">
+          {allTags.map(tag => (
+            <button class="tag filter-tag" data-tag={tag}>{tag}</button>
+          ))}
+        </div>
+      </div>
+
+      <div class="blog-listing__posts" id="blog-posts">
+        {posts.map(post => (
+          <div
+            class="blog-listing__item"
+            data-category={post.data.category}
+            data-tags={post.data.tags.join(',')}
+          >
+            <PostCard
+              title={post.data.title}
+              description={post.data.description}
+              pubDate={post.data.pubDate}
+              tags={post.data.tags}
+              category={post.data.category}
+              readingTime={post.data.readingTime}
+              slug={post.id}
+            />
+          </div>
+        ))}
+      </div>
+
+      <p class="blog-listing__empty" id="blog-empty" hidden>
+        No posts match the current filters.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-listing__title {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .blog-listing__filters {
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-listing__categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .filter-btn {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.8rem;
+    background: none;
+    border: 1.5px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn--active { border-color: var(--accent); color: var(--accent); background-color: var(--bg-surface); }
+
+  .blog-listing__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .filter-tag { cursor: pointer; background: none; }
+  .filter-tag--active { color: var(--accent); border-color: var(--accent); }
+
+  .blog-listing__empty {
+    font-style: italic;
+    color: var(--text-muted);
+    padding: 2rem 0;
+  }
+</style>
+
+<script>
+  const filters = document.getElementById('blog-filters');
+  const postsContainer = document.getElementById('blog-posts');
+  const emptyMsg = document.getElementById('blog-empty');
+  if (!filters || !postsContainer || !emptyMsg) throw new Error('Missing filter elements');
+
+  let activeCategory = 'All';
+  let activeTag: string | null = null;
+
+  function applyFilters() {
+    const items = postsContainer.querySelectorAll<HTMLElement>('.blog-listing__item');
+    let visibleCount = 0;
+
+    items.forEach(item => {
+      const cat = item.dataset.category ?? '';
+      const tags = (item.dataset.tags ?? '').split(',');
+      const matchesCat = activeCategory === 'All' || cat === activeCategory;
+      const matchesTag = !activeTag || tags.includes(activeTag);
+      const visible = matchesCat && matchesTag;
+      item.style.display = visible ? '' : 'none';
+      if (visible) visibleCount++;
+    });
+
+    emptyMsg.hidden = visibleCount > 0;
+  }
+
+  // Category buttons
+  filters.querySelectorAll<HTMLButtonElement>('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('filter-btn--active'));
+      btn.classList.add('filter-btn--active');
+      activeCategory = btn.dataset.category ?? 'All';
+      applyFilters();
+    });
+  });
+
+  // Tag buttons
+  filters.querySelectorAll<HTMLButtonElement>('.filter-tag').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag ?? '';
+      if (activeTag === tag) {
+        activeTag = null;
+        btn.classList.remove('filter-tag--active');
+      } else {
+        filters.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('filter-tag--active'));
+        btn.classList.add('filter-tag--active');
+        activeTag = tag;
+      }
+      applyFilters();
+    });
+  });
+</script>
