@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import TagList from '../components/TagList.astro';
-import SignupForm from '../components/SignupForm.astro';
 import AuthorCard from '../components/AuthorCard.astro';
 
 interface Props {
@@ -76,10 +75,6 @@ const displayTime = readingTime ?? 5;
         </div>
 
         <footer class="blog-post__footer">
-          <SignupForm
-            heading="Want more?"
-            description=""
-          />
           <AuthorCard />
         </footer>
       </div>
