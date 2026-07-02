@@ -1,6 +1,4 @@
 ---
-import SignupForm from './SignupForm.astro';
-
 const year = new Date().getFullYear();
 
 const socials = [
@@ -13,9 +11,6 @@ const socials = [
 
 <footer class="site-footer">
   <div class="footer__inner container">
-    <div class="footer__signup">
-      <SignupForm heading="" description="" />
-    </div>
     <div class="footer__bottom">
       <ul class="footer__socials">
         {socials.map(s => (
@@ -36,8 +31,6 @@ const socials = [
     border-top: 1px solid var(--border);
     padding: 2rem 0;
   }
-
-  .footer__signup { margin-bottom: 1.5rem; }
 
   .footer__bottom {
     display: flex;
