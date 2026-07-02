@@ -1,10 +1,10 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
   title="About"
-  description="Luis Meraz — actor and builder in Los Angeles. Building Apple MCP Bridge, writing about MCP and local-first architecture."
+  description="Luis Meraz — actor and builder in Los Angeles."
 >
   <section class="section">
     <div class="container">
@@ -12,51 +12,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <div class="prose">
         <p>
-          I am an actor, clown, and person that is pretty good at problem
-          solving... like really good. I'm not going to lie.
+          In my early life I was identified as good at solving problems. On the
+          recommendation of many with good intentions, I continued on a track
+          good problem solvers are sent towards to find success. I got paid very
+          nicely to solve very complicated problems at very neat places. You can
+          say I reached success as a problem solver. Yet, I felt an emptiness.
+          Even after I did all the things and solved all the problems I was
+          supposed to solve. I thought now what?
         </p>
         <p>
-          But then at some point you realize — oh, the problem is the fun.
-          I did all the things people told me I was supposed to do, and at the
-          end of it I asked, "now what?"
+          I returned home to find the small things that bring me delight. I got
+          curious about what brings me joy and grief. I realized it's ok to stay
+          in a problem. Problems are fun! I discovered clown around that time.
+          And now I'm different. I intend to share this of myself with you.
         </p>
+        <p>Oh, and I have a dog named Manny.</p>
         <p>
-          That's when I returned home to the small things that bring me delight
-          as I continue to follow my bliss.
-          I can tell you all about the fancy places I worked at and the nice things
-          I've done, but honestly I'm more than all of that put together. And so are you.
+          I still code to pay the bills, but honestly it's all going towards my
+          fuck around and find out budget.
         </p>
-        <p>
-          I'm still coding — because it's fun again, thanks to AI. But I'm also
-          putting my attention back on the things that matter to me, and that's been
-          the art of fucking around and finding out with my merry clown friends.
-        </p>
-        <p>
-          Oh, and I have a dog named Manny.
-        </p>
-      </div>
 
-      <picture>
-        <source type="image/avif" srcset="/images/optimized/photos/luis-sailing-640.avif" />
-        <img
-          src="/images/optimized/photos/luis-sailing-640.jpg"
-          width="1536"
-          height="2048"
-          alt="Luis Meraz sailing"
-          class="about__photo"
-          loading="lazy"
-          decoding="async"
-        />
-      </picture>
+        <picture>
+          <source
+            type="image/avif"
+            srcset="/images/optimized/photos/luis-sailing-640.avif"
+          />
+          <img
+            src="/images/optimized/photos/luis-sailing-640.jpg"
+            width="1536"
+            height="2048"
+            alt="Luis Meraz sailing"
+            class="about__photo"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </div>
     </div>
   </section>
-</BaseLayout>
 
-<style>
-  .about__photo {
-    width: min(100%, 24rem);
-    height: auto;
-    border-radius: 4px;
-    margin-top: 1rem;
-  }
-</style>
+  <style>
+    .about__photo {
+      width: min(100%, 24rem);
+      height: auto;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+  </style>
+</BaseLayout>
