@@ -57,8 +57,8 @@ const displayTime = readingTime ?? 5;
     <div class="container">
       <div class="reading-width">
         <header class="blog-post__header">
-          <div class="blog-post__meta">
-            <span class="blog-post__category label">{category}</span>
+          <div class="blog-post__meta meta">
+            <span>{category}</span>
             <span class="blog-post__sep">&middot;</span>
             <time datetime={pubDate.toISOString()}>{formattedDate}</time>
             <span class="blog-post__sep">&middot;</span>
@@ -95,10 +95,6 @@ const displayTime = readingTime ?? 5;
   }
 
   .blog-post__meta {
-    font-family: var(--font-heading);
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    color: var(--text-muted);
     margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
@@ -108,14 +104,13 @@ const displayTime = readingTime ?? 5;
   .blog-post__sep { opacity: 0.5; }
 
   .blog-post__title {
-    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 0.75rem;
   }
 
   .blog-post__updated {
-    font-family: var(--font-heading);
-    font-size: 0.7rem;
-    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
     margin-bottom: 0.75rem;
   }
 
