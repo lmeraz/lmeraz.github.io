@@ -74,6 +74,14 @@ const photos = [
           posterWebp="https://i.vimeocdn.com/video/2074097561-483022c7faaf89671864d48981f573f8f00b1d69cd234abe0402ae341108606e-d?f=webp&mw=960&q=85"
           posterJpg="https://i.vimeocdn.com/video/2074097561-483022c7faaf89671864d48981f573f8f00b1d69cd234abe0402ae341108606e-d?mw=960&q=85"
         />
+        <ReelCard
+          vimeoId="1206593117"
+          vimeoHash="c6631ddb6f"
+          title="Luis Meraz theater reel"
+          label="Theater"
+          posterWebp="https://i.vimeocdn.com/video/2175479378-9bdb309c332bb9401d406ce39bbc8a798f65def2c1642483656672ff4c190f11-d?f=webp&mw=960&q=85"
+          posterJpg="https://i.vimeocdn.com/video/2175479378-9bdb309c332bb9401d406ce39bbc8a798f65def2c1642483656672ff4c190f11-d?mw=960&q=85"
+        />
       </div>
     </div>
   </section>
@@ -133,6 +141,7 @@ const photos = [
 
   .reels-grid {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.25rem;
   }
 
@@ -149,6 +158,8 @@ const photos = [
     .acting-hero {
       grid-template-columns: 1fr;
     }
+
+    .reels-grid { grid-template-columns: 1fr; }
 
     .resume-frame { height: 320px; }
   }
