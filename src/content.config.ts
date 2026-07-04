@@ -8,6 +8,7 @@ export const CATEGORIES = [
   'MCP Ecosystem',
   'Build Log',
   'Philosophy',
+  'Acting',
 ] as const;
 
 const blog = defineCollection({
