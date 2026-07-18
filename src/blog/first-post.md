@@ -3,8 +3,8 @@ title: "Why Can't AI Agents Access Your Apple Data?"
 description: "Apple's personal data has no OAuth, no REST API. Here's why local-first MCP is the only answer."
 pubDate: 2026-04-03
 tags: ["mcp", "apple", "local-first"]
-category: "Apple Integration"
-draft: false
+category: "Philosophy"
+draft: true
 ---
 
 Apple's personal data — your calendars, contacts, notes, reminders — lives in a walled garden with no REST API and no OAuth flow. Cloud-hosted MCP connectors can't reach it.

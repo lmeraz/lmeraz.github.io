@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const pages = post.data.handwritten;
 
 const wordCount = post.body?.split(/\s+/).length ?? 0;
 const readingTime = post.data.readingTime ?? Math.ceil(wordCount / 200);
@@ -28,5 +30,41 @@ const readingTime = post.data.readingTime ?? Math.ceil(wordCount / 200);
   ogImage={post.data.ogImage}
   canonicalUrl={post.data.canonicalUrl}
 >
-  <Content />
+  {pages ? (
+    <>
+      {pages.map((page, i) => (
+        <Image
+          src={page}
+          alt={`Handwritten page ${i + 1} of ${pages.length}`}
+          width={1600}
+          class="handwritten-page"
+        />
+      ))}
+      <details class="transcript">
+        <summary>Transcript</summary>
+        <Content />
+      </details>
+    </>
+  ) : (
+    <Content />
+  )}
 </BlogPost>
+
+<style>
+  .handwritten-page {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+  }
+
+  .transcript {
+    margin-top: 1.5rem;
+  }
+
+  .transcript summary {
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+</style>
