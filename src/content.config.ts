@@ -3,17 +3,13 @@ import { defineCollection } from 'astro:content';
 import { z } from 'astro/zod';
 
 export const CATEGORIES = [
-  'Apple Integration',
-  'Performance',
-  'MCP Ecosystem',
-  'Build Log',
   'Philosophy',
   'Acting',
 ] as const;
 
 const blog = defineCollection({
   loader: glob({ base: './src/blog', pattern: '**/*.{md,mdx}' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
     pubDate: z.coerce.date(),
@@ -24,6 +20,7 @@ const blog = defineCollection({
     ogImage: z.string().optional(),
     canonicalUrl: z.string().url().optional(),
     draft: z.boolean().default(false),
+    handwritten: z.array(image()).optional(),
   }),
 });
 
