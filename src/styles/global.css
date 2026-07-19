@@ -1,21 +1,6 @@
-/* ── Tokens (Light) ────────────────────────────── */
+/* ── Tokens ────────────────────────────────────── */
 :root {
-  --bg: #faf7f2;
-  --bg-surface: #f1ece3;
-  --text: #211d19;
-  --text-muted: #6f6659;
-  --accent: #a84b28;
-  --accent-hover: #8c3d20;
-  --border: rgba(33, 29, 25, 0.15);
-  --focus-ring: var(--accent);
-  --font-body: 'Source Serif 4', Georgia, serif;
-  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
-  --content-width: 44rem;
-  --reading-width: 70ch;
-}
-
-/* ── Tokens (Dark) ─────────────────────────────── */
-html[data-theme="dark"] {
+  color-scheme: dark;
   --bg: #1c1916;
   --bg-surface: #292420;
   --text: #e9e2d8;
@@ -23,6 +8,11 @@ html[data-theme="dark"] {
   --accent: #e08d64;
   --accent-hover: #eba57f;
   --border: rgba(233, 226, 216, 0.16);
+  --focus-ring: var(--accent);
+  --font-body: 'Source Serif 4', Georgia, serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+  --content-width: 44rem;
+  --reading-width: 70ch;
 }
 
 /* ── Reset ─────────────────────────────────────── */
@@ -117,7 +107,7 @@ code, pre {
 
 .skip-link:focus { transform: translateY(0); }
 
-/* ── Links & buttons ───────────────────────────── */
+/* ── Links ─────────────────────────────────────── */
 .text-link {
   color: var(--accent);
   text-decoration: underline;
@@ -126,25 +116,6 @@ code, pre {
 }
 
 .text-link:hover { color: var(--accent-hover); }
-
-.btn-primary {
-  display: inline-block;
-  padding: 0.5rem 1.1rem;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--bg);
-  background-color: var(--text);
-  border: 1px solid var(--text);
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.btn-primary:hover {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg);
-}
 
 /* ── Blog prose ────────────────────────────────── */
 .prose p { margin-bottom: 1.5rem; line-height: 1.8; }

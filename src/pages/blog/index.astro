@@ -3,21 +3,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getCollection } from 'astro:content';
 import { CATEGORIES } from '../../content.config';
+import { readingTimeMinutes } from '../../lib/reading-time';
+import { uniqueTags } from '../../lib/tags';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const categories = ['All', ...CATEGORIES];
-const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
+const allTags = uniqueTags(posts);
 ---
 
 <BaseLayout
   title="Blog"
-  description="Technical blog on MCP connectors, Apple integration, local-first architecture, and building indie software."
+  description="Writing about my peculiar interests."
 >
   <section class="section">
     <div class="container">
-      <h1 class="blog-listing__title">Writing</h1>
+      <h1 class="blog-listing__title">Blog</h1>
 
       <div class="blog-listing__filters" id="blog-filters">
         <div class="blog-listing__categories">
@@ -50,8 +52,8 @@ const allTags = [...new Set(posts.flatMap(p => p.data.tags))].sort();
               pubDate={post.data.pubDate}
               tags={post.data.tags}
               category={post.data.category}
-              readingTime={post.data.readingTime}
-              slug={post.id}
+              readingTime={readingTimeMinutes(post.body)}
+              id={post.id}
             />
           </div>
         ))}

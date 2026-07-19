@@ -7,29 +7,28 @@ interface Props {
   pubDate: Date;
   tags: string[];
   category: string;
-  readingTime?: number;
-  slug: string;
+  readingTime: number;
+  id: string;
 }
 
-const { title, description, pubDate, tags, category, readingTime, slug } = Astro.props;
+const { title, description, pubDate, tags, category, readingTime, id } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'short',
   day: 'numeric',
+  timeZone: 'UTC',
 });
-
-const displayTime = readingTime ?? 5;
 ---
 
 <article class="post-card">
-  <a href={`/blog/${slug}`} class="post-card__link">
+  <a href={`/blog/${id}`} class="post-card__link">
     <h3 class="post-card__title">{title}</h3>
   </a>
   <div class="post-card__meta meta">
     <time datetime={pubDate.toISOString()}>{formattedDate}</time>
     <span class="post-card__sep">&middot;</span>
-    <span>{displayTime} min read</span>
+    <span>{readingTime} min read</span>
     <span class="post-card__sep">&middot;</span>
     <span>{category}</span>
   </div>

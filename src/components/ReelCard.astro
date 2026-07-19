@@ -97,6 +97,6 @@ const { vimeoId, vimeoHash, title, label, posterWebp, posterJpg } = Astro.props;
       wrapper.appendChild(iframe);
       card.replaceWith(wrapper);
       iframe.focus();
-    }, { once: true });
+    });
   });
 </script>
