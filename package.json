@@ -12,12 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^6.4.8",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.1.1",
     "sharp": "0.35.3"
-  },
-  "overrides": {
-    "esbuild": "^0.28.1"
   }
 }

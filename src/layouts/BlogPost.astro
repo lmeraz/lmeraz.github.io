@@ -10,7 +10,7 @@ interface Props {
   updatedDate?: Date;
   tags: string[];
   category: string;
-  readingTime?: number;
+  readingTime: number;
   ogImage?: string;
   canonicalUrl?: string;
 }
@@ -41,7 +41,6 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', {
   timeZone: 'UTC',
 });
 
-const displayTime = readingTime ?? 5;
 ---
 
 <BaseLayout
@@ -63,7 +62,7 @@ const displayTime = readingTime ?? 5;
             <span class="blog-post__sep">&middot;</span>
             <time datetime={pubDate.toISOString()}>{formattedDate}</time>
             <span class="blog-post__sep">&middot;</span>
-            <span>{displayTime} min read</span>
+            <span>{readingTime} min read</span>
           </div>
           <h1 class="blog-post__title">{title}</h1>
           {updatedDate && (

@@ -2,10 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getCollection } from 'astro:content';
+import { readingTimeMinutes } from '../../lib/reading-time';
+import { uniqueTags } from '../../lib/tags';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
-  const tags = [...new Set(posts.flatMap(p => p.data.tags))];
+  const tags = uniqueTags(posts);
 
   return tags.map(tag => ({
     params: { tag },
@@ -40,8 +42,8 @@ const { tag, posts } = Astro.props;
           pubDate={post.data.pubDate}
           tags={post.data.tags}
           category={post.data.category}
-          readingTime={post.data.readingTime}
-          slug={post.id}
+          readingTime={readingTimeMinutes(post.body)}
+          id={post.id}
         />
       ))}
     </div>

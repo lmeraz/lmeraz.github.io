@@ -4,11 +4,12 @@ import { z } from 'astro/zod';
 
 export const CATEGORIES = [
   'Philosophy',
+  'Art',
   'Acting',
 ] as const;
 
 const blog = defineCollection({
-  loader: glob({ base: './src/blog', pattern: '**/*.{md,mdx}' }),
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
   schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
@@ -16,9 +17,8 @@ const blog = defineCollection({
     updatedDate: z.coerce.date().optional(),
     tags: z.array(z.string()).min(1),
     category: z.enum(CATEGORIES),
-    readingTime: z.number().optional(),
     ogImage: z.string().optional(),
-    canonicalUrl: z.string().url().optional(),
+    canonicalUrl: z.url().optional(),
     draft: z.boolean().default(false),
     handwritten: z.array(image()).optional(),
   }),
